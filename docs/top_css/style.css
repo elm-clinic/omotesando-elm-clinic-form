@@ -1,0 +1,783 @@
+@charset 'UTF-8';
+
+/*
+COLORS
+================================================ */
+:root {
+  --text: #333;
+  --bg: #fff;
+  --video-opacity: 0.5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #666666;
+    --bg: radial-gradient(#ffe5ae, #ffffff);
+    --video-opacity: 0.7;
+  }
+}
+
+/*
+GENERAL STYLING
+================================================ */
+html {
+  font-size: 100%;
+}
+body {
+  color: var(--text);
+  background: var(--bg);
+  /* font-family: "Bree Serif", sans-serif; */
+  font-family: 'Shippori Mincho', serif;
+  transition: 0.5s;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*
+COMMON
+================================================ */
+p {
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+a:hover {
+  color: #0bd;
+}
+
+section {
+  padding: 100px 30px;
+}
+
+section:nth-child(1) {
+  min-height: 100vh;
+}
+
+section:nth-child(2n) {
+  background: #f3f3f3;
+}
+
+.center {
+  text-align: center;
+  font-size: 25px;
+}
+
+/*
+HEADER
+================================================ */
+header {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.header-text {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: left; */
+  align-items: center;
+  z-index: 2;
+  text-align: center;
+}
+.header-title {
+  font-size: 1.25rem;
+  color: #64b44c;
+  margin-bottom: 0 / rem;
+  font-family: "Parisienne", cursive;
+}
+.header-name {
+  font-size: 2.4rem;
+  color: #64b44c;
+  font-family: "Parisienne", cursive;
+}
+.header-link {
+  font-size: 1.25rem;
+}
+.header-pattern {
+  position: absolute;
+  z-index: 1;
+  background-size: auto auto;
+  /* background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, var(--bg) 2px, var(--bg) 4px ); */
+}
+header video {
+  object-fit: cover;
+  object-position: center top;
+  opacity: var(--video-opacity);
+}
+.header-text,
+.header-pattern,
+header video {
+  width: 100vw;
+  height: 90vh;
+}
+
+.img-top1 {
+  opacity: 0.8;
+}
+
+/*
+FOOTER
+================================================ */
+footer {
+  text-align: center;
+  padding-bottom: 3rem;
+}
+.footer-link {
+  margin-bottom: 0.5rem;
+}
+
+/*
+DESKTOP SIZE
+================================================ */
+@media (min-width: 600px) {
+  /* Header */
+  .header-name {
+    font-size: 5rem;
+  }
+}
+
+/*========= ページトップのためのCSS ===============*/
+
+/*スクロールリンクの形状*/
+.scroll-top {
+  /*表示位置*/
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  z-index: 2;
+  /*はじめは非表示*/
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s; /*それぞれに0.5秒の変化のアニメーション*/
+  /*縦書き*/
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  /*改行禁止*/
+  white-space: nowrap;
+  /*矢印の動き*/
+  animation: arrowmove 1s ease-in-out infinite;
+}
+
+@keyframes arrowmove {
+  0% {
+    bottom: 20px;
+  }
+  50% {
+    bottom: 25px;
+  }
+  100% {
+    bottom: 20px;
+  }
+}
+
+/*.scroll-viewクラスがついたら出現*/
+.scroll-top.scroll-view {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*リンク全体の aタグの形状*/
+.scroll-top a {
+  text-decoration: none;
+  color: #666;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  display: block;
+}
+
+/*スクロールリンクの形状*/
+
+.js-scroll a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 50px;
+  background: #666;
+}
+
+.js-scroll a::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: -6px;
+  width: 1px;
+  height: 20px;
+  background: #666;
+  transform: skewX(-31deg);
+}
+
+/*Edge IE11 hack*/
+_:-ms-lang(x),
+.js-scroll a::before {
+  right: -11px;
+}
+
+/*ページトップリンクの形状*/
+
+.js-pagetop a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 50px;
+  background: #666;
+}
+
+.js-pagetop a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 1px;
+  height: 20px;
+  background: #666;
+  transform: skewX(31deg);
+}
+
+/*Edge IE11 hack*/
+_:-ms-lang(x),
+.js-pagetop a::before {
+  right: 0;
+}
+
+@charset "utf-8";
+
+/*========= ぼかしのためのCSS ===============*/
+
+.mainblur {
+  filter: blur(8px);
+}
+
+/*========= ナビゲーションのためのCSS ===============*/
+
+#g-nav {
+  /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
+  position: fixed;
+  z-index: -1;
+  opacity: 0; /*はじめは透過0*/
+  /*ナビの位置と形状*/
+  top: 0;
+  width: 100%;
+  height: 100vh; /*ナビの高さ*/
+  background: rgba(255, 255, 255, 0.3); /*背景を少し透過させる*/
+  /*動き*/
+  transition: all 0.3s;
+}
+
+/*アクティブクラスがついたら透過なしにして最前面へ*/
+#g-nav.panelactive {
+  opacity: 1;
+  z-index: 999;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list {
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100vh; /*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  display: none; /*はじめは非表示*/
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#g-nav.panelactive ul {
+  display: block;
+}
+/*リストのレイアウト設定*/
+
+#g-nav li {
+  list-style: none;
+  text-align: center;
+}
+
+#g-nav li a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn {
+  position: fixed;
+  z-index: 9999; /*ボタンを最前面に*/
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+/*×に変化*/
+.openbtn span {
+  display: inline-block;
+  transition: all 0.4s;
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #666;
+  width: 45%;
+}
+
+.openbtn span:nth-of-type(1) {
+  top: 15px;
+}
+
+.openbtn span:nth-of-type(2) {
+  top: 23px;
+}
+
+.openbtn span:nth-of-type(3) {
+  top: 31px;
+}
+
+.openbtn.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3) {
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+/*==================================================
+スライダーのためのcss
+===================================*/
+
+/*画像の横幅を100%にしてレスポンシブ化*/
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom; /*画像の下にできる余白を削除*/
+}
+
+/*メイン画像下に余白をつける*/
+.gallery {
+  margin: 0 0 5px 0;
+}
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+  position: absolute; /*絶対配置にする*/
+  z-index: 3;
+  top: 42%;
+  cursor: pointer; /*マウスカーソルを指マークに*/
+  outline: none; /*クリックをしたら出てくる枠線を消す*/
+  border-top: 2px solid #ccc; /*矢印の色*/
+  border-right: 2px solid #ccc; /*矢印の色*/
+  height: 25px;
+  width: 25px;
+}
+
+.slick-prev {
+  /*戻る矢印の位置と形状*/
+  left: 2.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {
+  /*次へ矢印の位置と形状*/
+  right: 2.5%;
+  transform: rotate(45deg);
+}
+
+/*選択するサムネイル画像の設定*/
+
+.choice-btn li {
+  cursor: pointer;
+  outline: none;
+  background: #333;
+}
+
+.choice-btn li img {
+  opacity: 0.4; /*選択されていないものは透過40%*/
+}
+
+.choice-btn li.slick-current img {
+  opacity: 1; /*選択されているものは透過しない*/
+}
+
+.gray {
+  color: #666666;
+}
+
+/*==================================================
+アコーディオンのためのcss
+===================================*/
+
+/*アコーディオン全体*/
+.accordion-area {
+  list-style: none;
+  width: 96%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.accordion-area li {
+  margin: 10px 0;
+}
+
+.accordion-area section {
+  border: 1px solid #ccc;
+}
+
+/*アコーディオンタイトル*/
+.title {
+  position: relative; /*+マークの位置基準とするためrelative指定*/
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 3% 3% 3% 50px;
+  transition: all 0.5s ease;
+  /* background-color: #ffe5ae; */
+  background-color: #dde69d;
+  color: #666666;
+}
+
+/*アイコンの＋と×*/
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 2px;
+  background-color: rgb(185, 185, 185);
+}
+.title::before {
+  top: 48%;
+  left: 15px;
+  transform: rotate(0deg);
+}
+.title::after {
+  top: 48%;
+  left: 15px;
+  transform: rotate(90deg);
+}
+
+/*closeというクラスがついたら形状変化*/
+
+.title.close::before {
+  transform: rotate(45deg);
+}
+
+.title.close::after {
+  transform: rotate(-45deg);
+}
+
+/*アコーディオンで現れるエリア*/
+.box {
+  display: none; /*はじめは非表示*/
+  /* background: rgb(185, 185, 185); */
+  /* background: linear-gradient(#fbe9bd, #f3ffdc); */
+  background: linear-gradient(#f3ffdc, #fbe9bd);
+  margin: 0 3% 3% 3%;
+  padding: 3%;
+}
+
+.shiny-btn4 {
+  display: block;
+  position: relative;
+  width: 80%; /*ボタンの幅*/
+  padding: 10px 0;
+  margin: 30px auto;
+  background-color: #84ca6f; /*ボタンの色*/
+  box-shadow: 0 3.5px 0 0 rgb(222, 230, 157); /*影の色(rgbaの値を変更)*/
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.shiny-btn4:hover {
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.7;
+  box-shadow: none;
+  -webkit-transform: translateY(3px);
+}
+.shiny-btn4::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #fff;
+  animation: shiny-btn4 3s ease-in-out infinite;
+}
+@-webkit-keyframes shiny-btn4 {
+  0% {
+    -webkit-transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  80% {
+    -webkit-transform: scale(0) rotate(45deg);
+    opacity: 0.5;
+  }
+  81% {
+    -webkit-transform: scale(4) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* 店舗情報・地図 */
+#location {
+  padding: 4% 0;
+}
+
+.location-map {
+  width: 100%;
+}
+
+/* iframe */
+iframe {
+  width: 100%;
+}
+
+.address {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定*/
+#splash {
+  /*fixedで全面に固定*/
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgb(222, 230, 157);
+  text-align: center;
+  color: #fff;
+}
+
+/* Loading画像中央配置*/
+#splash_logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Parisienne", cursive;
+}
+
+/* Loading アイコンの大きさ設定*/
+#splash_logo img {
+  width: 260px;
+}
+
+/* fadeUpをするアイコンの動き */
+
+.fadeUp {
+  animation-name: fadeUpAnime;
+  animation-duration: 2.1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {
+  /*横幅94%で左右に余白を持たせて中央寄せ*/
+  width: 94%;
+  margin: 0 auto;
+}
+
+.slider img {
+  width: 100%; /*スライダー内の画像を横幅100%に*/
+  height: auto;
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.slider .slick-slide {
+  margin: 0 10px;
+}
+
+.slider li p {
+  font-size: medium;
+}
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+  position: absolute; /*絶対配置にする*/
+  top: 42%;
+  cursor: pointer; /*マウスカーソルを指マークに*/
+  outline: none; /*クリックをしたら出てくる枠線を消す*/
+  border-top: 2px solid #666; /*矢印の色*/
+  border-right: 2px solid #666; /*矢印の色*/
+  height: 15px;
+  width: 15px;
+}
+
+.slick-prev {
+  /*戻る矢印の位置と形状*/
+  left: -1.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {
+  /*次へ矢印の位置と形状*/
+  right: -1.5%;
+  transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-dots button {
+  color: transparent;
+  outline: none;
+  width: 8px; /*ドットボタンのサイズ*/
+  height: 8px; /*ドットボタンのサイズ*/
+  display: block;
+  border-radius: 50%;
+  background: #ccc; /*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button {
+  background: #333; /*ドットボタンの現在地表示の色*/
+}
+
+.blue {
+  color: rgb(56, 209, 201);
+}
+
+.small {
+  font-size: smaller;
+}
+
+.max-heigth {
+  max-height: 420px;
+}
+
+
+.mincho {
+  font-family: 'Shippori Mincho', serif;
+}
+
+
+.triangle {
+  display: table;
+  width: 100%;
+  height: 500px;
+  background-color: #fcecbc;
+  transform: skewY(-2deg);
+  margin-top: 10vw;
+  border-radius: 10px;
+}
+
+/*
+SPEAKERS
+================================================ */
+#area-3 {
+	padding: 4rem 1rem;
+}
+
+.speakers-list {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: flex-start;
+	margin-bottom: 2rem;
+}
+.speakers-text {
+	margin-left: 1rem;
+}
+
+#area-3 h2 {
+background: linear-gradient(var(--orange), var(--pink));
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+text-fill-color: transparent;
+}
+
+#area-3 h3 {
+	font-size: 1.5rem;
+	margin-bottom: .5rem;
+}
+#area-3 img {
+	border-radius: 50%;
+	width: 20%;
+}
+
+.doctor-message {
+	color :red ;
+}
+
+.privacy-policy {
+  text-align: left;
+  font-size: small;
+}
+
+.privacy-flame {
+  margin: 30px;
+}
