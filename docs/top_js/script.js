@@ -190,6 +190,17 @@ function recalc() {
 	refresh();  
 }
 
+// const goal = new Date(2021, 6, 31, 18, 00);
+
+// function recalc() {
+// 	const counter = countdown(goal);
+// 	document.getElementById('day').textContent = counter[0];
+// 	document.getElementById('hour').textContent = counter[1];
+// 	document.getElementById('min').textContent = String(counter[2]).padStart(2, '0');
+// 	document.getElementById('sec').textContent = String(counter[3]).padStart(2, '0');
+// 	refresh();  
+// }
+
 function refresh() {
 	setTimeout(recalc, 1000);
 }
