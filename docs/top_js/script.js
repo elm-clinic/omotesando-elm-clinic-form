@@ -179,7 +179,7 @@ function countdown(due) {
 	return count;
 }
 
-const goal = new Date(2021, 6, 21, 9, 30);
+const goal = new Date(2021, 7, 31, 18, 00);
 
 function recalc() {
 	const counter = countdown(goal);
