@@ -175,7 +175,7 @@
 
             <label>・第１希望のお日にち <span class="necessary">(必須)</span></label>
             <p class="necessary">※ 当面の間、日・月曜日は休診日です！</p>
-            &emsp; <span class="necessary">→</span>&nbsp;<input type="date" name = "desired_date_1">             
+            &emsp; <span class="necessary">→</span>&nbsp;<input type="date" name = "desired_date_1" required="required">             
             <br><br>
             <fieldset>
               <label>・第１希望のお時間 <span class="necessary">(必須)</span></label>
@@ -206,14 +206,14 @@
 
               <br><br><br>
 
-              <label>・第２希望のお日にち (任意)</label>
+              <label>・第２希望のお日にち <span class="necessary">(必須)</span></label>
               <p class="necessary">※ 当面の間、日・月曜日は休診日です！</p>
-              &emsp; <span class="necessary">→</span>&nbsp;<input type="date" name = "desired_date_2"> 
+              &emsp; <span class="necessary">→</span>&nbsp;<input type="date" name = "desired_date_2" required="required"> 
               <br><br>
               <fieldset>
-                <label>・第２希望のお時間 (任意)</label>
+                <label>・第２希望のお時間 <span class="necessary">(必須)</span></label>
                 <!-- <input type="text" name="city" placeholder="City" required=""> -->
-                <select name="desired_time_2">
+                <select name="desired_time_2" required="required">
                   <option value="Select" selected="" disabled="">↓ ご希望のお時間 ↓</option>
                   <option value="9時30分">9時30分</option>
                   <option value="10時">10時</option>
@@ -236,6 +236,41 @@
                 </select>
                   <!-- <input type="text" name="postal-code" placeholder="12345" required=""> -->
                 </fieldset>
+                <br><br><br>
+
+                <label>・第３希望のお日にち (任意)</label>
+                <p class="necessary">※ 当面の間、日・月曜日は休診日です！</p>
+                &emsp; <span class="necessary">→</span>&nbsp;<input type="date" name = "desired_date_3">             
+                <br><br>
+                <fieldset>
+                  <label>・第３希望のお時間 (任意)</label>
+                  <!-- <input type="text" name="city" placeholder="City" required=""> -->
+                  <select name="desired_time_3">
+                    <option value="Select" selected="" disabled="">↓ ご希望のお時間 ↓</option>
+                    <option value="9時30分">9時30分</option>
+                    <option value="10時">10時</option>
+                    <option value="10時30分">10時30分</option>
+                    <option value="11時">11時</option>
+                    <option value="11時30分">11時30分</option>
+                    <option value="12時">12時</option>
+                    <option value="12時30分">12時30分</option>
+                    <option value="13時">13時</option>
+                    <option value="13時30分">13時30分</option>
+                    <option value="14時">14時</option>
+                    <option value="14時30分">14時30分</option>
+                    <option value="15時">15時</option>
+                    <option value="15時30分">15時30分</option>
+                    <option value="16時">16時</option>
+                    <option value="16時30分">16時30分</option>
+                    <option value="17時">17時</option>
+                    <option value="17時30分">17時30分</option>
+                    <option value="17時">18時</option>
+                  </select>
+                    <!-- <input type="text" name="postal-code" placeholder="12345" required=""> -->
+                  </fieldset>
+    
+                  <br><br><br>
+    
              
             <br><br><br>
             <label for="message">その他 (任意)</label>
