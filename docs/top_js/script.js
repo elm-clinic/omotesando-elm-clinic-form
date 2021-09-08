@@ -205,3 +205,27 @@ function refresh() {
 	setTimeout(recalc, 1000);
 }
 recalc();
+
+
+
+// //スクロールした際の動きを関数でまとめる
+// function PageTopAnime() {
+// 	var scroll = $(window).scrollTop();
+// 	if (scroll >= 200){//上から200pxスクロールしたら
+// 		$('#fixed-reservation').removeClass('DownMove');//#fixed-reservationについているDownMoveというクラス名を除く
+// 		$('#fixed-reservation').addClass('UpMove');//#fixed-reservationについているUpMoveというクラス名を付与
+// 	}else{
+// 		if($('#fixed-reservation').hasClass('UpMove')){//すでに#fixed-reservationにUpMoveというクラス名がついていたら
+// 			$('#fixed-reservation').removeClass('UpMove');//UpMoveというクラス名を除き
+// 			$('#fixed-reservation').addClass('DownMove');//DownMoveというクラス名を#fixed-reservationに付与
+// 		}
+// 	}
+// }
+
+// // #fixed-reservationをクリックした際の設定
+// $('#fixed-reservation').click(function () {
+//     $('body,html').animate({
+//         scrollTop: 0//ページトップまでスクロール
+//     }, 500);//ページトップスクロールの速さ。数字が大きいほど遅くなる
+//     return false;//リンク自体の無効化
+// });

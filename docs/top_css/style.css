@@ -926,3 +926,36 @@ input[type="submit"] {
 .top-message {
   margin-bottom: 1rem;
 }
+
+
+
+/*リンクの形状*/
+#fixed-reservation a{
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	background:#69be4f;
+	border-radius: 8px;
+	width: 75px;
+	height: 80px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase; 
+	text-decoration: none;
+	font-size:1.2rem;
+    letter-spacing: 0.1em;
+	transition:all 0.3s;
+}
+
+
+/*リンクを右下に固定*/
+#fixed-reservation {
+	position: fixed;
+	left: 10px;
+	bottom:10px;
+	z-index: 2;
+  opacity: 0.75;
+    /*はじめは非表示*/
+	/* opacity: 0; */
+	/* transform: translateY(100px); */
+}
