@@ -543,7 +543,7 @@ img {
   width: 30px;
   height: 100%;
   background-color: #fff;
-  animation: shiny-btn4 3s ease-in-out infinite;
+  animation: shiny-btn4 1.5s ease-in-out infinite;
 }
 @-webkit-keyframes shiny-btn4 {
   0% {
@@ -922,3 +922,7 @@ input[type="submit"] {
   color: red;
 }
 
+
+.top-message {
+  margin-bottom: 1rem;
+}
