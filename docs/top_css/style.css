@@ -570,6 +570,46 @@ img {
   }
 }
 
+.shiny-btn5 {
+  display: block;
+  position: relative;
+  width: 80%; /*ボタンの幅*/
+  padding: 10px 0;
+  margin: 30px auto;
+  background-color: #84ca6f; /*ボタンの色*/
+  box-shadow: 0 3.5px 0 0 rgb(222, 230, 157); /*影の色(rgbaの値を変更)*/
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+  z-index: 3;
+}
+
+.shiny-btn5:hover {
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.7;
+  box-shadow: none;
+  -webkit-transform: translateY(3px);
+}
+
+.shiny-btn5::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #fff;
+  /* animation: shiny-btn4 1.5s ease-in-out infinite; */
+}
+
+
 /* 店舗情報・地図 */
 #location {
   padding: 4% 0;
